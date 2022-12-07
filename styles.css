@@ -164,7 +164,15 @@
       height: 80px;
       margin: 0;
     }
-  
+    .test-text-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40%;
+      height: 80px;
+      margin: 0;
+    }
+
     #mobile-menu {
       position: absolute;
       top: 20%;
@@ -702,4 +710,14 @@
       padding: 10px;
       width: 100%;
     }
+  }
+
+  .test-text-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 80px;
+    margin: 20px 0;
+    
   }

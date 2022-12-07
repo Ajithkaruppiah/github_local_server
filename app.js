@@ -15,6 +15,7 @@ const highlightMenu = () => {
   const elem = document.querySelector('.highlight');
   const homeMenu = document.querySelector('#home-page');
   const aboutMenu = document.querySelector('#about-page');
+  const testMenu = document.querySelector('#test-page');
   const servicesMenu = document.querySelector('#services-page');
   let scrollPos = window.scrollY;
   // console.log(scrollPos);
@@ -54,3 +55,29 @@ const hideMobileMenu = () => {
 
 menuLinks.addEventListener('click', hideMobileMenu);
 navLogo.addEventListener('click', hideMobileMenu);
+
+let lessons=["body part"];
+
+render();
+
+function addTodo(){
+  let textbox= document.getElementById("test-title");
+  let title= textbox.value;
+lessons.push(title);
+console.log(lessons);
+render();
+}
+
+function render(){
+
+  //below line reeset our list
+  document.getElementById("test-list").innerHTML="";
+
+
+  lessons.forEach( function (todoTitle){
+    let element =document.createElement("div");
+    element.innerText = todoTitle;
+    let testList= document.getElementById("test-list");
+    testList.appendChild(element);
+  })
+}
