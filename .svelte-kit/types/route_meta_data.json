@@ -10,5 +10,11 @@
 	],
 	"/sverdle/how-to-play": [
 		"src/routes/sverdle/how-to-play/+page.js"
+	],
+	"/sample_ui": [
+		"src/routes/sample_ui/+page.server.js"
+	],
+	"/sample_ui/how-to-play": [
+		"src/routes/sample_ui/how-to-play/+page.js"
 	]
 }

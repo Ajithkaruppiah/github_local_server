@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { invalid } from '@sveltejs/kit';
-import { Game } from '../sample_ui/game';
+import { Game } from './game';
 
 /** @param {Parameters<import('./$types').PageServerLoad>[0]} event */
 export const load = ({ cookies }) => {

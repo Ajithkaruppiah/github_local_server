@@ -1,10 +1,95 @@
+<script>
+	let text = '';
+	let text2 = '';
+
+	/**/
+
+	import { fade } from 'svelte/transition';
+	import { elasticOut } from 'svelte/easing';
+
+	let visible = false;
+
+	// @ts-ignore
+
+	function handleClick() {
+		visible=!visible;
+		
+	}
+
+
+	// @ts-ignore
+	function spin(node, { duration }) {
+		return {
+			duration,
+			// @ts-ignore
+			css: t => {
+				const eased = elasticOut(t);
+
+				return `
+					transform: scale(${eased}) rotate(${eased * 1080}deg);
+					color: hsl(
+						${~~(t * 180)},
+						${Math.min(100, 1000 - 1000 * t)}%,
+						${Math.min(50, 500 - 500 * t)}%
+					);`
+			}
+		};
+	}
+	
+</script>
 
 <div class="topnav">
-	<a class="active" href="#home">Albums</a>
-	<a href="#about">Photos</a>
-	<a href="#contact">Profile</a>
+	<a class="active" href="#home">Lessons</a>	
 	<input type="text" placeholder="Search..">
+
+	
 </div>
+<div class="card">
+	<div class="container">
+		<div class="heading-row">
+			<h4><b>Language-L1</b></h4> 
+			<button>
+			  +
+		   </button>
+		</div>
+	  <div class="add-text-row">
+	  <input class="text-field"   bind:value={text} placeholder="enter the text">
+	  <input class="check-box"  type="checkbox">
+	  </div>
+	</div>
+	<div class="divider">
+	</div>
+	<div class="container">
+		<div class="heading-row">
+			<h4><b>Language-L2</b></h4> 
+			<button>
+			  +
+		   </button>
+		</div>
+	  <div class="add-text-row">
+	  <input class="text-field"   bind:value={text2} placeholder="enter the text">
+	  <input class="check-box"  type="checkbox">
+	  </div>
+	</div>
+ </div>
+
+
+
+ <label style={"display:flex"} >
+	<button  style={"height:30px"} on:click={handleClick}>
+		add lessons
+	</button>
+
+	{#if visible}
+	<div class="centered" in:spin="{{duration: 2000}}" out:fade>
+		<span>Lessons added</span>
+	</div>
+{/if}
+
+</label>
+
+
+
 <style>
 
 	/* Add a black background color to the top navigation bar */
@@ -59,6 +144,63 @@
   .topnav input[type=text] {
     border: 1px solid #ccc;
   }
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px; /* 5px rounded corners */
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+.container {
+  padding: 2px 16px;
+}
+.heading-row {
+		border: #020202;
+		display:flex	
+}
+
+div {
+		margin: 10px;
+}
+
+label {
+		height: 50px;
+}
+button {
+	
+		align-content: center;
+		margin: 15px;
+}
+
+.text-field {
+		height: 30px;
+		border: #020202;
+		align-content: flex-start;		
+}
+
+
+.check-box {
+		border: #020202;
+		align-content: center;		
+}
+
+.centered {
+		font-size: x-large;	
+		align-self:center;
+}
+
+.divider {
+		display: flex;
+		border-top: 1px solid rgba(0, 0, 0, 0.1);
+		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+		margin: 1rem 0;
 }
 </style>
 
